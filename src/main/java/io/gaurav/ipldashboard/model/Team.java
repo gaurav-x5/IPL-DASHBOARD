@@ -1,10 +1,15 @@
 package io.gaurav.ipldashboard.model;
 
+import java.util.List;
+
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+
 
 @Entity
 public class Team {
@@ -16,10 +21,28 @@ public class Team {
     private long totalMatches;
     private long totalWins;
 
+    // if we don't want to save value of a particular variable in a file, then we use transient keyword
+    @Transient
+    private List<Match> matches;
+
     public Team(String teamName, long totalMatches) {
         this.teamName = teamName;
         this.totalMatches = totalMatches;
     }
+
+    public Team() {
+
+    }
+
+
+    public List<Match> getMatches() {
+        return this.matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
+    }
+
     
     
     public long getId() {
