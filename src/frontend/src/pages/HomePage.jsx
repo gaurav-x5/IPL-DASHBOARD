@@ -14,7 +14,6 @@ export const  HomePage = () => {
             const fetchAllTeams = async () => {
                 const response = await fetch(`http://localhost:8080/team`)
                 const data = await response.json();
-                console.log(data)
                 setTeams(data)
 
             };
@@ -33,7 +32,7 @@ export const  HomePage = () => {
         </div>
         <div className="team-grid">
             {
-                teams.map(team => <TeamTile teamName={team.teamName} />)
+                teams.map(team => <TeamTile key={team.teamName} teamName={team.teamName} />)
             }
         </div>
     </div>
